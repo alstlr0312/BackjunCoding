@@ -10,18 +10,13 @@ fun main() {
     while(true){
         val n = br.readLine().toInt()
         if(n == 0) break
-        val input = IntArray(n){ br.readLine().toInt() }
+        val input = IntArray(n){ br.readLine().toInt()}
         val dp = IntArray(n+1)
-        var sum = 0
-        var result = Int.MIN_VALUE
-        for(i in 0 until n){
-            sum+=input[i]
-            result=Math.max(result,sum)
-            if(sum<0) sum=0
+        var result = -10000
+        for(i in 1 .. n){
+            dp[i] = input[i-1].coerceAtLeast(dp[i-1] + input[i-1])
+            result = result.coerceAtLeast(dp[i])
         }
         println(result)
     }
 }
-
-
-
