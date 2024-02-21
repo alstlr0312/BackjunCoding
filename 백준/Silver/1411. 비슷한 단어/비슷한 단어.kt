@@ -6,19 +6,22 @@ import kotlin.math.floor
 import kotlin.math.max
 
 
-val br = System.`in`.bufferedReader()
-
-fun list() = br.readLine().split(" ").map { it.toInt() }.toMutableSet()
-fun input() = br.readLine().split(" ")
-fun brr() = br.readLine().split(' ').map { it.toInt() }
+class InputHandler {
+    val br = System.`in`.bufferedReader()
+    fun list(): MutableSet<Int> = br.readLine().split(" ").map { it.toInt() }.toMutableSet()
+    fun input(): List<String> = br.readLine().split(" ")
+    fun brr(): List<Int> = br.readLine().split(' ').map { it.toInt() }
+}
 
 fun main() {
-    val n = br.readLine().toInt()
+    val handler = InputHandler()
+    val n = handler.br.readLine().toInt()
 
     val words = Array(n + 1) { "" }
     for (i in 1..n) {
-        words[i] = br.readLine()
+        words[i] = handler.br.readLine()
     }
+
     var cnt = 0
     for (i in 1 until n) {
         for (j in i + 1..n) {
